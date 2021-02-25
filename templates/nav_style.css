@@ -1,11 +1,12 @@
 :root {
-    --text-color: #f1e8e8;
+    --text-color: #f8f5f5;
     --background-color: #263343;
     --accent-color: #d49466;
 }
 body{
     margin: 0;
     font-family: 'Source Sans Pro', sans-serif;
+    background-color: var(--text-color);
 }
 a{
     text-decoration: none;
@@ -14,11 +15,13 @@ a{
 
 
 .navbar {
+    align-self: center;
     display: flex;
     justify-content: space-between;
     align-items: center;
     background-color: var(--background-color);
     padding: 8px 16px;
+    margin-bottom: 30px;
 
 }
 .navbar_logo{
@@ -50,12 +53,15 @@ a{
 .navbar_writeBtn button {
     padding: 5px 12px;
     border-radius: 30px;
+    border: var(--text-color) 2px solid;
     cursor: pointer;
+    font-size: 14px;
     font-weight: bold;
     outline: none;
 }
 .navbar_writeBtn button:hover{
     color: var(--text-color);
+    background-color: var(--background-color);
 }
 .navbar_toogleBtn {
     position: absolute;
@@ -64,7 +70,84 @@ a{
     font-size: 24px;
     color: var(--accent-color);
     display: none;
+}
+.form_post{
+    width: 50%;
+    margin: auto;
+    top: 20px;
+    padding: 50px;
+    border: var(--background-color) solid;
+    border-radius: 5px;
+    display: none;
+    background-color: aliceblue;
+}
+.form-group label{
+    display: block;
+    margin-bottom: 10px;
+}
+.form-control {
+    width: 90%;
+    font-size: 15px;
+    margin-bottom: 15px;
+    padding: 6px 12px;
+    border-radius: 5px;
+    border: rgb(206, 212, 218) 1px solid;
+}
+.form-url {
+    height: 20px;
+}
+.form-comment {
+    height: 50px;
+}
+.btn {
+    padding: 6px 12px;
+    border-radius: 4px;
+    border: rgb(206, 212, 218) 1px solid;
+    cursor: pointer;
+}
+.btn-primary{
+    background-color: white;
+    font-weight: bold;
+    color: black;
+}
+.btn-primary:hover{
+    color: var(--text-color);
+    background-color: var(--background-color);
+}
+.card-columns {
+    width: 85%;
+    margin: auto;
+    margin-top: 50px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-column-gap: 20px;
+}
+.card{
+    display: grid;
+    grid-template-rows:  200px 1fr max-content
 
+}
+.card-footer {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    background-color: var(--background-color);
+}
+.card-footer .likeBtn {
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    color: var(--text-color);
+    outline: none;
+    margin: 5px 10px;
+    font-size: 20px;
+}
+.card-footer .likeBtn:hover{
+    color: var(--accent-color);
+}
+.card-footer .likeNumber {
+    color: var(--text-color);
+    font-size: 20px;
 }
 
 @media screen and (max-width: 768px){
@@ -88,6 +171,7 @@ a{
         display: none;
         justify-content: center;
         width: 100%;
+        margin-bottom: 15px;
     }
     .navbar_toogleBtn {
         display: block;
