@@ -115,7 +115,7 @@ a{
     margin-top: 50px;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-    grid-gap: 20px;
+    grid-gap: 30px;
 }
 .card{
     border-radius: 4px;
@@ -152,14 +152,15 @@ a{
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background-color: var(--background-color);
+    background-color: white;
     padding: 5px 8px;
+    border-top: 1px solid rgb(248, 249, 250);
 }
 .like .likeBtn {
     border: none;
     background-color: transparent;
     cursor: pointer;
-    color: var(--text-color);
+    color: var(--background-color);
     outline: none;
     margin: 5px 10px;
     font-size: 20px;
@@ -168,14 +169,14 @@ a{
     color: var(--accent-color);
 }
 .card-footer .likeNumber {
-    color: var(--text-color);
+    color: var(--background-color);
     font-size: 20px;
     justify-self: end;
 }
 .card-name{
     font-size: 20px;
     margin: 0;
-    color: var(--text-color);
+    color: var(--background-color);
 
 }
 

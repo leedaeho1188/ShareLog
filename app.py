@@ -14,7 +14,7 @@ def home():
 
 @app.route('/memo', methods=['GET'])
 def listing():
-    blogs = list(db.ShareLog_HtmlCss.find({}, {'_id': False}))
+    blogs = list(db.ShareLog_HtmlCss.find({}, {'_id': False}).sort('like', -1))
     return jsonify({'all_blogs': blogs})
 
 ## API 역할을 하는 부분
@@ -46,6 +46,16 @@ def saving():
 
 
     return jsonify({'msg':'저장이 완료되었습니다.'})
+@app.route('/api/like', methods=['POST'])
+def like_star():
+    title_receive = request.form['title_give']
+    target_blog = db.ShareLog_HtmlCss.find_one({'title': title_receive})
+    current_like = target_blog['like']
+    new_like = current_like + 1
+    db.ShareLog_HtmlCss.update_one({'title': title_receive},{'$set':{'like': new_like}})
+
+
+    return jsonify({'msg': 'like 연결되었습니다!'})
 
 if __name__ == '__main__':
    app.run('0.0.0.0',port=5000,debug=True)

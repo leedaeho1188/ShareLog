@@ -10,7 +10,7 @@
     <script src="https://kit.fontawesome.com/22f5918b80.js" crossorigin="anonymous"></script>
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet">
-    <script defer src="{{url_for('static', filename='app.js')}}"></script>
+    <script defer type="text/javascript" src="{{url_for('static', filename='app.js')}}"></script>
     <script
       src="https://code.jquery.com/jquery-3.5.1.js"
       integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
@@ -68,7 +68,7 @@
                                             <div class="card-footer">
                                                 <span class="card-name">by ${name}</span>
                                                 <div class="like">
-                                                    <a href="#" class="likeBtn">
+                                                    <a href="#" class="likeBtn" onclick= "likeStar('${title}')">
                                                         <i class="fas fa-heart"></i>
                                                     </a>
                                                     <span class="likeNumber">${like}</span>
@@ -79,10 +79,20 @@
                         }
                     }
                 })
-            }
+        }
+        function likeStar(title) {
+                $.ajax({
+                    type: 'POST',
+                    url: '/api/like',
+                    data: {title_give:title},
+                    success: function (response) {
+                        alert(response['msg']);
+                        window.location.reload();
+                    }
+                });
+        }
 
     </script>
-    <link rel="stylesheet" href="../../Painting-Board-made-with-VanillaJS/style.css">
 </head>
 <body>
     <nav class="navbar">
