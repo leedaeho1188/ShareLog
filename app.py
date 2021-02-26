@@ -22,6 +22,7 @@ def listing():
 def saving():
     url_receive = request.form['url_give']
     name_receive = request.form['name_give']
+    comment_receive = request.form['comment_give']
 
 
     headers = {
@@ -32,12 +33,12 @@ def saving():
 
     title = soup.select_one('meta[property="og:title"]')['content']
     image = soup.select_one('meta[property="og:image"]')['content']
-    desc = soup.select_one('meta[property="og:description"]')['content']
+    # desc = soup.select_one('meta[property="og:description"]')['content']
 
     doc = {
         'title':title,
         'image':image,
-        'desc':desc,
+        'comment':comment_receive,
         'url': url_receive,
         'name': name_receive,
         'like': 0
