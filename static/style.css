@@ -208,9 +208,18 @@ a{
     display: grid;
     margin: auto;
     width: 90%;
-    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-    grid-gap: 40px;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-gap: 50px;
+
 }
+.rank{
+    padding: 5px 10px;
+    border-radius: 4px;
+    background-color: white;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.12), 0 2px 5px rgba(0,0,0,0.24);
+    transition: box-shadow 0.25s ease-in 0s, transform 0.25s ease-in 0s;
+}
+
 .rank_in_order {
     /*list-style: none;*/
 }
@@ -218,6 +227,7 @@ a{
     padding: 0;
 }
 .rank ol li {
+    list-style: none;
     justify-content: space-between;
     margin-bottom: 10px;
 
@@ -230,6 +240,9 @@ a{
     text-overflow: ellipsis;
     color: var(--background-color);
 }
+.rank ol li a:hover{
+    font-weight: bold;
+}
 .rank ol li div{
     text-align: end;
 }
@@ -240,6 +253,9 @@ a{
     display: inline-block;
     font-size: 20px;
     margin: 10px 0px;
+}
+.rank p span:hover{
+    border-bottom: var(--background-color) 2px solid;
 }
 
 
