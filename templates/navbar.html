@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>navbar</title>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar_logo">
+            <a href="{{ url_for('Home') }}">⛵ ShareLog</a>
+        </div>
+        <ul class="navbar_menu">
+            <li><a href="{{ url_for('htmlCss') }}">HTML/CSS</a></li>
+            <li><a href="{{ url_for('javaScript') }}">JavaScript</a></li>
+            <li><a href="{{ url_for('python') }}">Python</a></li>
+            <li><a href="{{ url_for('algorithm') }}">알고리즘</a></li>
+            <li><a href="{{ url_for('honeyTip') }}">그외 꿀 정보</a></li>
+        </ul>
+        <div class="navbar_writeBtn">
+            <button onclick="openClose()">새 글 작성</button>
+        </div>
+        <a href="#" class="navbar_toogleBtn">
+            <i class="fas fa-bars"></i>
+        </a>
+    </nav>
+</body>
+</html>

@@ -7,6 +7,7 @@ body{
     margin: 0;
     font-family: 'Source Sans Pro', sans-serif;
     background-color: var(--text-color);
+    padding-bottom: 40px;
 }
 a{
     text-decoration: none;
@@ -132,6 +133,9 @@ a{
     padding: 1rem;
     background-color: white;
 }
+.card-body a {
+    color: black;
+}
 .card-title{
     color: var(--background-color);
     font-size: 18px;
@@ -178,8 +182,51 @@ a{
     font-size: 20px;
     margin: 0;
     color: var(--background-color);
-
 }
+.main-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+    margin: auto;
+}
+.main-header-option {
+    display: flex;
+}
+.optionHeader{
+    margin-left: 20px;
+    list-style: none;
+    padding-bottom: 10px;
+}
+.optionHeader a{
+    color: var(--background-color);
+}
+.option_recent :focus, .option_trending :focus{
+    border-bottom: var(--background-color) 3px solid;
+}
+.rank_form{
+    display: grid;
+    margin: auto;
+    width: 90%;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    grid-gap: 30px;
+}
+.rank_in_order {
+    /*list-style: none;*/
+}
+.rank ol {
+    padding: 0;
+}
+.rank ol li {
+    margin-bottom: 10px;
+}
+.rank ol li a{
+    color: var(--background-color);
+}
+.rank a{
+    color: var(--background-color);
+}
+
 
 @media screen and (max-width: 768px){
     .navbar{

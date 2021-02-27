@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>card</title>
+</head>
+<body>
+    <div class="card">
+        <div class="card-img">
+            <a href="${url}">
+                <img class="card-img-top"
+                     src="${image}"
+                     alt="이미지가 없습니다..ㅠ">
+            </a>
+        </div>
+        <div class="card-body">
+            <a target="_blank" href="${url}" class="card-title">${title}</a>
+            <a href="${url}">
+                <p class="card-text">${comment}</p>
+            </a>
+        </div>
+        <div class="card-footer">
+            <span class="card-name">by ${name}</span>
+            <div class="like">
+                <a href="#" class="likeBtn" onclick= "likeStar('${title}')">
+                    <i class="fas fa-heart"></i>
+                </a>
+                <span class="likeNumber">${like}</span>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

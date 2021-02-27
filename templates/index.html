@@ -5,139 +5,162 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="{{ url_for('static', filename='nav_style.css') }}">
-    <title>Nav bar</title>
+    <title>⛵ ShareLog</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     <script src="https://kit.fontawesome.com/22f5918b80.js" crossorigin="anonymous"></script>
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet">
     <script defer type="text/javascript" src="{{url_for('static', filename='app.js')}}"></script>
     <script
-      src="https://code.jquery.com/jquery-3.5.1.js"
-      integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
-      crossorigin="anonymous">
+        src="https://code.jquery.com/jquery-3.5.1.js"
+        integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+        crossorigin="anonymous">
     </script>
-    <script defer>
+    <script>
         $(document).ready(function () {
-                showArticles();
-            });
-        function openClose(){
-            if ($("#post-box").css("display") == "block"){
-                $("#post-box").hide();
-            } else {
-                $("#post-box").show();
-            }
-        }
-        function postArticle() {
-                let url = $('#post-url').val()
-                let name = $('#post-name').val()
-                let comment = $('#post-comment').val()
-
-                $.ajax({
-                    type: "POST",
-                    url: "/memo",
-                    data: {url_give: url, name_give: name, comment_give: comment},
-                    success: function (response) { // 성공하면
-                        alert(response["msg"]);
-                        window.location.reload()
-                    }
-                })
-        }
-        function showArticles() {
+            showArticlesHtmlCss();
+            showArticlesJavaScript();
+            showArticlesPython();
+            showArticlesAlgorithm();
+            showArticlesHoneyTip();
+        });
+        function showArticlesHtmlCss() {
                 $.ajax({
                     type: "GET",
-                    url: "/memo?sample_give=샘플데이터",
+                    url: "/rank_htmlCss",
                     data: {},
                     success: function (response) {
                         let reviews = response['all_blogs']
-                        for (let i = 0; i < reviews.length; i++){
+                        for (let i = 0; i < 5; i++){
                             let title = reviews[i]['title']
-                            let image = reviews[i]['image']
-                            let comment = reviews[i]['comment']
-                            let url = reviews[i]['url']
-                            let name = reviews[i]['name']
                             let like = reviews[i]['like']
-                            temp_html = `<div class="card">
-                                            <div class="card-img">
-                                                <img class="card-img-top"
-                                                     src="${image}"
-                                                     alt="Card image cap">
-                                            </div>
-                                            <div class="card-body">
-                                                <a target="_blank" href="${url}" class="card-title">${title}</a>
-                                                <p class="card-text">${comment}</p>
-                                            </div>
-                                            <div class="card-footer">
-                                                <span class="card-name">by ${name}</span>
-                                                <div class="like">
-                                                    <a href="#" class="likeBtn" onclick= "likeStar('${title}')">
-                                                        <i class="fas fa-heart"></i>
-                                                    </a>
-                                                    <span class="likeNumber">${like}</span>
-                                                </div>
-                                            </div>
-                                        </div>`
-                            $('#cards-box').append(temp_html)
+                            let url = reviews[i]['url']
+                            temp_html = `<li class="rank_in_order"> <a href="${url}">${title}</a> ${like} </li>`
+                            $('#rank_htmlCss').append(temp_html)
                         }
                     }
                 })
         }
-        function likeStar(title) {
+        function showArticlesJavaScript() {
                 $.ajax({
-                    type: 'POST',
-                    url: '/api/like',
-                    data: {title_give:title},
+                    type: "GET",
+                    url: "/rank_javaScript",
+                    data: {},
                     success: function (response) {
-                        alert(response['msg']);
-                        window.location.reload();
+                        let reviews = response['all_blogs']
+                        for (let i = 0; i < 5; i++){
+                            let title = reviews[i]['title']
+                            let like = reviews[i]['like']
+                            let url = reviews[i]['url']
+                            temp_html = `<li class="rank_in_order"> <a href="${url}">${title}</a> ${like} </li>`
+                            $('#rank_javaScript').append(temp_html)
+                        }
                     }
-                });
+                })
         }
-
+        function showArticlesPython() {
+                $.ajax({
+                    type: "GET",
+                    url: "/rank_python",
+                    data: {},
+                    success: function (response) {
+                        let reviews = response['all_blogs']
+                        for (let i = 0; i < 5; i++){
+                            let title = reviews[i]['title']
+                            let like = reviews[i]['like']
+                            let url = reviews[i]['url']
+                            temp_html = `<li class="rank_in_order"><a href="${url}">${title}</a> ${like} </li>`
+                            $('#rank_python').append(temp_html)
+                        }
+                    }
+                })
+        }
+        function showArticlesAlgorithm() {
+                $.ajax({
+                    type: "GET",
+                    url: "/rank_algorithm",
+                    data: {},
+                    success: function (response) {
+                        let reviews = response['all_blogs']
+                        for (let i = 0; i < 5; i++){
+                            let title = reviews[i]['title']
+                            let like = reviews[i]['like']
+                            let url = reviews[i]['url']
+                            temp_html = `<li class="rank_in_order"> <a href="${url}">${title}</a> ${like} </li>`
+                            $('#rank_algorithm').append(temp_html)
+                        }
+                    }
+                })
+        }
+        function showArticlesHoneyTip() {
+                $.ajax({
+                    type: "GET",
+                    url: "/rank_honeyTip",
+                    data: {},
+                    success: function (response) {
+                        let reviews = response['all_blogs']
+                        for (let i = 0; i < 5; i++){
+                            let title = reviews[i]['title']
+                            let like = reviews[i]['like']
+                            let url = reviews[i]['url']
+                            temp_html = `<li class="rank_in_order"> <a href="${url}">${title}</a>  ${like} </li>`
+                            $('#rank_honeyTip').append(temp_html)
+                        }
+                    }
+                })
+        }
     </script>
 </head>
 <body>
-    <nav class="navbar">
-        <div class="navbar_logo">
-            <i class="fas fa-strikethrough"></i>
-            <a href="#">ShareLog</a>
-        </div>
-        <ul class="navbar_menu">
-            <li><a href="#">HTML/CSS</a></li>
-            <li><a href="#">JavaScript</a></li>
-            <li><a href="#">Python</a></li>
-            <li><a href="#">알고리즘</a></li>
-            <li><a href="#">그외 꿀정보</a></li>
-        </ul>
-        <div class="navbar_writeBtn">
-            <button onclick="openClose()">새 글 작성</button>
-        </div>
-        <a href="#" class="navbar_toogleBtn">
-            <i class="fas fa-bars"></i>
-        </a>
-    </nav>
-    <div class="form_post" id="post-box">
-        <div class="form-group">
-            <label for="post-name">작성자</label>
-            <input type="text"  id="post-name" class="form-control form-name" placeholder="" >
-        </div>
-        <div class="form-group">
-            <label for="post-url">아티클 URL</label>
-            <input type="text" id="post-url" class="form-control form-url" placeholder="">
-        </div>
-        <div class="form-group">
-            <label for="post-comment">아티클 COMMENT</label>
-            <textarea type="text" id="post-comment" class="form-control form-comment" placeholder="아티클에대한 코멘트 남겨주세요"></textarea>
-        </div>
-
-        <button type="button" class="btn btn-primary" onclick="postArticle()">블로그 저장</button>
+<nav class="navbar">
+    <div class="navbar_logo">
+        <a href="{{ url_for('Home') }}">⛵ ShareLog</a>
     </div>
-    <div id="cards-box" class="card-columns">
+    <ul class="navbar_menu">
+        <li><a href="{{ url_for('htmlCss') }}">HTML/CSS</a></li>
+        <li><a href="{{ url_for('javaScript') }}">JavaScript</a></li>
+        <li><a href="{{ url_for('python') }}">Python</a></li>
+        <li><a href="{{ url_for('algorithm') }}">알고리즘</a></li>
+        <li><a href="{{ url_for('honeyTip') }}">그외 꿀 정보</a></li>
+    </ul>
+    <div class="navbar_writeBtn" id="D-day" style="color: var(--text-color)">
 
     </div>
+    <a href="#" class="navbar_toogleBtn">
+        <i class="fas fa-bars"></i>
+    </a>
 
+</nav>
+<div class="rank_form">
+    <div class="rank">
+        <a href="{{ url_for('htmlCss') }}"><p>HTML/CSS</p></a>
+        <ol id="rank_htmlCss">
 
+        </ol>
+    </div>
+    <div class="rank" >
+        <a href="{{ url_for('javaScript') }}"><p>JavaScript</p></a>
+        <ol id="rank_javaScript">
 
+        </ol>
+    </div>
+    <div class="rank" >
+        <a href="{{ url_for('python') }}"><p>Python</p></a>
+        <ol id="rank_python">
 
+        </ol>
+    </div>
+    <div class="rank" >
+        <a href="{{ url_for('algorithm') }}"><p>알고리즘</p></a>
+        <ol id="rank_algorithm">
+        </ol>
+    </div>
+    <div class="rank" >
+        <a href="{{ url_for('honeyTip') }}"><p>그외 꿀 정보</p></a>
+        <ol id="rank_honeyTip">
 
+        </ol>
+    </div>
+</div>
 </body>
 </html>

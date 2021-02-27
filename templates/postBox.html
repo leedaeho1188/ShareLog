@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>postBox</title>
+</head>
+<body>
+    <div class="form_post" id="post-box">
+        <div class="form-group">
+            <label for="post-name">작성자</label>
+            <input type="text"  id="post-name" class="form-control form-name" placeholder="" >
+        </div>
+        <div class="form-group">
+            <label for="post-url">URL</label>
+            <input type="text" id="post-url" class="form-control form-url" placeholder="">
+        </div>
+        <div class="form-group">
+            <label for="post-comment">COMMENT</label>
+            <textarea type="text" id="post-comment" class="form-control form-comment" placeholder="아티클에대한 코멘트 남겨주세요"></textarea>
+        </div>
+        <button type="button" class="btn btn-primary" onclick="postArticle()">블로그 저장</button>
+    </div>
+</body>
+</html>
