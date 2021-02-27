@@ -209,7 +209,7 @@ a{
     margin: auto;
     width: 90%;
     grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-    grid-gap: 30px;
+    grid-gap: 40px;
 }
 .rank_in_order {
     /*list-style: none;*/
@@ -218,13 +218,28 @@ a{
     padding: 0;
 }
 .rank ol li {
+    justify-content: space-between;
     margin-bottom: 10px;
+
 }
 .rank ol li a{
+    display: block;
+    -webkit-line-clamp: 1;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
     color: var(--background-color);
+}
+.rank ol li div{
+    text-align: end;
 }
 .rank a{
     color: var(--background-color);
+}
+.rank p{
+    display: inline-block;
+    font-size: 20px;
+    margin: 10px 0px;
 }
 
 
