@@ -50,7 +50,7 @@
                     data: {},
                     success: function (response) {
                         let reviews = response['all_blogs']
-                        for (let i = 0; i < reviews.length; i++){
+                        for (let i = reviews.length-1; i >= 0; i--){
                             let title = reviews[i]['title']
                             let image = reviews[i]['image']
                             let comment = reviews[i]['comment']
