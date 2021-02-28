@@ -23,7 +23,6 @@ a{
     background-color: var(--background-color);
     padding: 8px 16px;
     margin-bottom: 30px;
-
 }
 .navbar_logo{
     font-size: 24px;
@@ -74,7 +73,7 @@ a{
 }
 .form_post{
     width: 50%;
-    margin: auto;
+    margin: 40px auto;
     top: 20px;
     padding: 50px;
     border: var(--background-color) solid;
@@ -82,9 +81,23 @@ a{
     display: none;
     background-color: white;
 }
+.form-comment{
+    height: 40px;
+}
 .form-group label{
     display: block;
     margin-bottom: 10px;
+}
+.form-introduce{
+    padding-left: 0;
+}
+.form-group div{
+    font-size: 25px;
+}
+.form-introduce li{
+    list-style: none;
+    margin-bottom: 20px;
+    font-size: 18px;
 }
 .form-control {
     width: 90%;
@@ -95,10 +108,11 @@ a{
     border: rgb(206, 212, 218) 2px solid;
     height: 20px
 }
+
 .btn {
     padding: 6px 12px;
     border-radius: 4px;
-    border: rgb(206, 212, 218) 2px solid;
+    border: rgb(55, 56, 57) 2px solid;
     cursor: pointer;
 }
 .btn-primary{
@@ -256,6 +270,7 @@ a{
 }
 .rank p span:hover{
     border-bottom: var(--background-color) 2px solid;
+    font-weight: bold;
 }
 
 

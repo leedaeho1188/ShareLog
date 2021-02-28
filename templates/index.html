@@ -23,6 +23,7 @@
             showArticlesPython();
             showArticlesAlgorithm();
             showArticlesHoneyTip();
+            showArticlesComment()
         });
         function showArticlesHtmlCss() {
                 $.ajax({
@@ -104,6 +105,14 @@
                     }
                 })
         }
+
+        function openClose(){
+            if ($("#post-box").css("display") == "block"){
+                $("#post-box").hide();
+            } else {
+                $("#post-box").show();
+            }
+        }
     </script>
 </head>
 <body>
@@ -119,13 +128,22 @@
         <li><a href="{{ url_for('honeyTip') }}">그외 꿀 정보</a></li>
     </ul>
     <div class="navbar_writeBtn" id="D-day" style="color: var(--text-color)">
-
+        <button onclick="openClose()">사이트 소개</button>
     </div>
     <a href="#" class="navbar_toogleBtn">
         <i class="fas fa-bars"></i>
     </a>
-
 </nav>
+<div class="form_post" id="post-box">
+    <div class="form-group">
+        <div>소개</div>
+        <ul class="form-introduce">
+            <li>⛵ <b>ShareLog</b>는 항해하면서 서로가 가진 좋은 정보들을 간편하게 <b>공유</b> 할 수 있는 사이트 입니다.</li>
+            <li>✨ 메인 창에는 <b>주제별로</b> 🖤가 제일 높은 글 5개를 볼 수 있게 정리했습니다.</li>
+            <li>🎨 각 정보에 맞는 주제로 들어가서 글을 올려주시면 됩니다. 그리고  <b>해당 주제의 기반 언어</b>들도 그 주제에 같이 올리시면 됩니다.</li>
+        </ul>
+    </div>
+</div>
 <div class="rank_form">
     <div class="rank">
         <a href="{{ url_for('htmlCss') }}"><p>🤘 <span>HTML/CSS</span></p></a>
