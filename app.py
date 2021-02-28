@@ -12,6 +12,14 @@ db = client.dbsparta
 def Home():
    return render_template('index.html')
 
+@app.route('/hh99')
+def hanghae99():
+   return render_template('hanghae99.html')
+
+@app.route('/hh99/recent')
+def hanghae99Recent():
+   return render_template('hanghae99Recent.html')
+
 @app.route('/htmlCss')
 def htmlCss():
    return render_template('htmlCss.html')
@@ -52,6 +60,11 @@ def honeyTip():
 def honeyTipRecent():
    return render_template('honeyTipRecent.html')
 
+@app.route('/rank_hanghae99', methods=['GET'])
+def rankHangHae99():
+    blogs = list(db.ShareLog_HangHae99.find({}, {'_id': False}).sort('like', -1))
+    return jsonify({'all_blogs': blogs})
+
 @app.route('/rank_htmlCss', methods=['GET'])
 def rankHtmlCss():
     blogs = list(db.ShareLog_HtmlCss.find({}, {'_id': False}).sort('like', -1))
@@ -75,6 +88,16 @@ def rankAlgorithm():
 @app.route('/rank_honeyTip', methods=['GET'])
 def rankHoneyTip():
     blogs = list(db.ShareLog_HoneyTip.find({}, {'_id': False}).sort('like', -1))
+    return jsonify({'all_blogs': blogs})
+
+@app.route('/hanghae99', methods=['GET'])
+def listingHangHae99():
+    blogs = list(db.ShareLog_HangHae99.find({}, {'_id': False}).sort('like', -1))
+    return jsonify({'all_blogs': blogs})
+
+@app.route('/hanghae99/recent', methods=['GET'])
+def listingHangHae99Recent():
+    blogs = list(db.ShareLog_HangHae99_Recent.find({}, {'_id': False}).sort('like', -1))
     return jsonify({'all_blogs': blogs})
 
 @app.route('/htmlCSS', methods=['GET'])
@@ -128,6 +151,38 @@ def listingHoneyTipRecent():
     return jsonify({'all_blogs': blogs})
 
 ## API 역할을 하는 부분
+
+@app.route('/hanghae99', methods=['POST'])
+def savingHangHae99():
+    url_receive = request.form['url_give']
+    name_receive = request.form['name_give']
+    comment_receive = request.form['comment_give']
+
+
+    headers = {
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36'}
+    data = requests.get(url_receive, headers=headers)
+
+    soup = BeautifulSoup(data.text, 'html.parser')
+
+    title = soup.select_one('meta[property="og:title"]')['content']
+    image = soup.select_one('meta[property="og:image"]')['content']
+    # desc = soup.select_one('meta[property="og:description"]')['content']
+
+    doc = {
+        'title':title,
+        'image':image,
+        'comment':comment_receive,
+        'url': url_receive,
+        'name': name_receive,
+        'like': 0
+    }
+    db.ShareLog_HangHae99.insert_one(doc)
+    db.ShareLog_HangHae99_Recent.insert_one(doc)
+
+
+    return jsonify({'msg':'저장이 완료되었습니다.'})
+
 @app.route('/htmlCSS', methods=['POST'])
 def savingHtmlCss():
     url_receive = request.form['url_give']
@@ -282,6 +337,17 @@ def savingHoneyTip():
 
 
     return jsonify({'msg':'저장이 완료되었습니다.'})
+
+@app.route('/api/like/hanghae99', methods=['POST'])
+def like_starHangHae99():
+    title_receive = request.form['title_give']
+    target_blog = db.ShareLog_HangHae99.find_one({'title': title_receive})
+    current_like = target_blog['like']
+    new_like = current_like + 1
+    db.ShareLog_HangHae99.update_one({'title': title_receive},{'$set':{'like': new_like}})
+    db.ShareLog_HangHae99_Recent.update_one({'title': title_receive}, {'$set': {'like': new_like}})
+
+    return jsonify({'msg': 'like 연결되었습니다!'})
 
 @app.route('/api/like/htmlCSS', methods=['POST'])
 def like_starHtmlCss():

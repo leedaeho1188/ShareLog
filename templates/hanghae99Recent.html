@@ -6,7 +6,7 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-    <title>⛵ ShareLog/꿀 정보</title>
+    <title>⛵ ShareLog/항해99</title>
     <script src="https://kit.fontawesome.com/22f5918b80.js" crossorigin="anonymous"></script>
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet">
@@ -34,7 +34,7 @@
 
                 $.ajax({
                     type: "POST",
-                    url: "/honeyTIP",
+                    url: "/hanghae99",
                     data: {url_give: url, name_give: name, comment_give: comment},
                     success: function (response) { // 성공하면
                         alert(response["msg"]);
@@ -45,7 +45,7 @@
         function showArticles() {
                 $.ajax({
                     type: "GET",
-                    url: "/honeyTIP/recent",
+                    url: "/hanghae99/recent",
                     data: {},
                     success: function (response) {
                         let reviews = response['all_blogs']
@@ -65,7 +65,7 @@
         function likeStar(title) {
                 $.ajax({
                     type: 'POST',
-                    url: '/api/like/honeyTIP',
+                    url: '/api/like/hanghae99',
                     data: {title_give:title},
                     success: function (response) {
                         alert(response['msg']);
@@ -83,15 +83,15 @@
     {% include 'navbar.html' %}
     {% include 'postBox.html' %}
     <div class="main-header">
-        <p class="main-header-name">🍯<b>그외 꿀 정보</b> 공유해주세요!</p>
+        <p class="main-header-name">🚩<b>항해99</b> 여러분들의 개발 블로그나 프로젝트를 공유해주세요!</p>
         <ul class="main-header-option">
             <li class="optionHeader option_trending">
-                <a href="{{ url_for('honeyTip') }}">
+                <a href="{{ url_for('hanghae99') }}">
                     <i class="fas fa-sort-amount-up"></i> 트렌딩
                 </a>
             </li>
             <li class="optionHeader option_recent">
-                <a href="{{ url_for('honeyTipRecent') }}">
+                <a href="{{ url_for('hanghae99Recent') }}">
                     <i class="far fa-clock"></i> 최신
                 </a>
             </li>

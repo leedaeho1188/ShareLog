@@ -23,8 +23,27 @@
             showArticlesPython();
             showArticlesAlgorithm();
             showArticlesHoneyTip();
-            showArticlesComment()
+            showArticlesHangHae99()
+
         });
+
+        function showArticlesHangHae99() {
+                $.ajax({
+                    type: "GET",
+                    url: "/rank_hanghae99",
+                    data: {},
+                    success: function (response) {
+                        let reviews = response['all_blogs']
+                        for (let i = 0; i < 5; i++){
+                            let title = reviews[i]['title']
+                            let url = reviews[i]['url']
+                            temp_html = `<li class="rank_in_order"> <a href="${url}">${i+1}. ${title}</a> </li>`
+                            $('#rank_hanghae99').append(temp_html)
+                        }
+                    }
+                })
+        }
+
         function showArticlesHtmlCss() {
                 $.ajax({
                     type: "GET",
@@ -114,6 +133,9 @@
             }
         }
     </script>
+    <meta property="og:title" content="⛵ ShareLog" />
+    <meta property="og:description" content="여러분의 꿀 팁을 나눠주세요!" />
+    <meta property="og:image" content="{{ url_for('static', filename='ogimage.png') }}" />
 </head>
 <body>
 <nav class="navbar">
@@ -121,6 +143,7 @@
         <a href="{{ url_for('Home') }}">⛵ ShareLog</a>
     </div>
     <ul class="navbar_menu">
+        <li><a href="{{ url_for('hanghae99') }}">항해99</a></li>
         <li><a href="{{ url_for('htmlCss') }}">HTML/CSS</a></li>
         <li><a href="{{ url_for('javaScript') }}">JavaScript</a></li>
         <li><a href="{{ url_for('python') }}">Python</a></li>
@@ -136,15 +159,32 @@
 </nav>
 <div class="form_post" id="post-box">
     <div class="form-group">
-        <div>소개</div>
+        <div>🖐 <span> 소개 </span></div>
         <ul class="form-introduce">
-            <li>⛵ <b>ShareLog</b>는 항해하면서 서로가 가진 좋은 정보들을 간편하게 <b>공유</b> 할 수 있는 사이트 입니다.</li>
-            <li>✨ 메인 창에는 <b>주제별로</b> 🖤가 제일 높은 글 5개를 볼 수 있게 정리했습니다.</li>
-            <li>🎨 각 정보에 맞는 주제로 들어가서 글을 올려주시면 됩니다. 그리고  <b>해당 주제의 기반 언어</b>들도 그 주제에 같이 올리시면 됩니다.</li>
+            <li><b>ShareLog</b>는 항해하면서 서로가 가진 <b>좋은 정보</b>들을 간편하게 <b>공유</b> 하면 좋겠다는 생각이 들어서 조금이나마
+                도움이 되길 바라는 마음에 만든 사이트 입니다.</li>
+            <li>메인 창에는 <b>주제별로</b> 🖤가 제일 높은 글 5개를 볼 수 있게 정리했습니다.</li>
+            <li>각 정보에 맞는 주제로 들어가서 글을 올려주시면 됩니다. 그리고  <b>해당 주제의 기반 언어</b>들도 그 주제에 같이 올리시면 됩니다.</li>
+            <li><b>항해99</b> 페이지에서는 각자의 <b>개발 블로그나 프로젝트를</b> 공유해주시면 좋을 것 같습니다.</li>
+            <li>웹 사이트에 있는 정보는 <b>다</b> 올리실 수 있습니다. ex) 유투브, 블로그, 등등</li>
+        </ul>
+    </div>
+    <div class="form-group">
+        <div>❗ <span>주의 사항</span></div>
+        <ul class="form-introduce">
+            <li>사이트가 부실하여 몇가지 주의 사항이 있습니다.</li>
+            <li>게시물을 <b>지우고 싶으실 때</b>는 따로 저한테 말해주시면 제가 지우겠습니다.</li>
+            <li>각 게시물에 🖤는 <b>1번</b>만 눌러 주시면 감사하겠습니다.</li>
         </ul>
     </div>
 </div>
 <div class="rank_form">
+    <div class="rank">
+        <a href="{{ url_for('hanghae99') }}"><p>🚩 <span>항해99</span></p></a>
+        <ol id="rank_hanghae99">
+
+        </ol>
+    </div>
     <div class="rank">
         <a href="{{ url_for('htmlCss') }}"><p>🤘 <span>HTML/CSS</span></p></a>
         <ol id="rank_htmlCss">

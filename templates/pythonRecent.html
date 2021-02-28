@@ -6,7 +6,7 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-    <title>⛵ ShareLog</title>
+    <title>⛵ ShareLog/Python</title>
     <script src="https://kit.fontawesome.com/22f5918b80.js" crossorigin="anonymous"></script>
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet">
@@ -75,12 +75,15 @@
         }
 
     </script>
+    <meta property="og:title" content="⛵ ShareLog" />
+    <meta property="og:description" content="여러분의 꿀 팁을 나눠주세요!" />
+    <meta property="og:image" content="{{ url_for('static', filename='ogimage.png') }}" />
 </head>
 <body>
     {% include 'navbar.html' %}
     {% include 'postBox.html' %}
     <div class="main-header">
-        <p class="main-header-name">Python</p>
+        <p class="main-header-name">🚣‍<b>Python</b> 및 해당 기반언어 정보 공유해주세요!</p>
         <ul class="main-header-option">
             <li class="optionHeader option_trending">
                 <a href="{{ url_for('python') }}">

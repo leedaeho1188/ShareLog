@@ -35,9 +35,9 @@ a{
     list-style: none;
     padding-left:0;
 }
-.navbar_menu li:hover{
-    background-color: var(--accent-color);
-    border-radius: 4px;
+.navbar_menu li a:hover{
+    color: var(--accent-color);
+    font-weight: bold;
 }
 .navbar_menu li{
     font-size: 20px;
@@ -92,7 +92,13 @@ a{
     padding-left: 0;
 }
 .form-group div{
+    margin-top: 30px;
     font-size: 25px;
+}
+.form-group div span{
+    font-weight: bold;
+    background-color: gold;
+    border-radius: 4px;
 }
 .form-introduce li{
     list-style: none;
@@ -175,6 +181,9 @@ a{
     padding: 5px 8px;
     border-top: 1px solid rgb(248, 249, 250);
 }
+.card-name span{
+    color: darkgrey;
+}
 .like .likeBtn {
     border: none;
     background-color: transparent;
@@ -204,6 +213,10 @@ a{
     width: 90%;
     margin: auto;
 }
+.main-header-name{
+    font-size: 20px;
+
+}
 .main-header-option {
     display: flex;
 }
@@ -215,7 +228,7 @@ a{
 .optionHeader a{
     color: var(--background-color);
 }
-.option_recent :focus, .option_trending :focus{
+.option_recent :hover, .option_trending :hover{
     border-bottom: var(--background-color) 3px solid;
 }
 .rank_form{
