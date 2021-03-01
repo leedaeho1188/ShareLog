@@ -37,7 +37,6 @@
                     url: "/Algorithm",
                     data: {url_give: url, name_give: name, comment_give: comment},
                     success: function (response) { // 성공하면
-                        alert(response["msg"]);
                         window.location.reload()
                     }
                 })
@@ -68,7 +67,6 @@
                     url: '/api/like/Algorithm',
                     data: {title_give:title},
                     success: function (response) {
-                        alert(response['msg']);
                         window.location.reload();
                     }
                 });
